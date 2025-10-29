@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Warning</title>
+    <meta name="description" content="I've caught you and you know it! Your device has been infected!" />
+    <link rel="preload" as="audio" href="assets/audio/siren.mp3" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="overlay" class="overlay" aria-hidden="false">
+      <div class="overlay-card">
+        <h1>Enable sound</h1>
+        <p>Click para activar el sonido estridente.</p>
+        <button id="enable-audio" class="btn">ACTIVAR SONIDO</button>
+      </div>
+    </div>
+    <main class="stage">
+      <div class="neon-frame">
+        <img class="warning-gif" src="assets/img/warning.gif" alt="I've caught you and you know it! Your device has been infected!" />
+        <div class="light-strip top"></div>
+        <div class="light-strip right"></div>
+        <div class="light-strip bottom"></div>
+        <div class="light-strip left"></div>
+      </div>
+      <audio id="siren" src="assets/audio/siren.mp3" preload="auto" loop></audio>
+    </main>
+    <script src="js/main.js"></script>
+  </body>
+</html>

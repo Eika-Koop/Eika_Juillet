@@ -1,0 +1,90 @@
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(circle at 50% 45%, #000 0%, #060606 60%, #000 100%);
+  display: grid;
+  place-items: center;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+  color: #fff;
+}
+.overlay {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+}
+.overlay[aria-hidden="true"] { display: none; }
+.overlay-card {
+  background: #0b0b0b;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 24px 28px;
+  text-align: center;
+  box-shadow: 0 0 24px rgba(0,0,0,0.6);
+}
+.btn {
+  margin-top: 12px;
+  padding: 12px 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  background: linear-gradient(90deg, #00ffea, #ff00bf);
+  box-shadow: 0 0 20px rgba(255, 0, 191, 0.6), 0 0 30px rgba(0, 255, 234, 0.4);
+}
+.btn:active { transform: translateY(1px); }
+.stage { width: min(92vw, 900px); padding: 24px; }
+.neon-frame {
+  position: relative;
+  padding: 18px;
+  border-radius: 18px;
+  background: #030303;
+  box-shadow:
+    0 0 14px rgba(255, 0, 191, 0.45),
+    0 0 28px rgba(0, 255, 234, 0.35),
+    inset 0 0 18px rgba(255, 255, 255, 0.05);
+  animation: neonPulse 1.6s ease-in-out infinite;
+}
+.warning-gif {
+  display: block; width: 100%; height: auto; border-radius: 12px;
+  filter: contrast(110%) saturate(120%);
+}
+@keyframes neonPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(255,0,191,.35), 0 0 20px rgba(0,255,234,.25), inset 0 0 12px rgba(255,255,255,.04); }
+  40% { box-shadow: 0 0 26px rgba(255,0,191,.65), 0 0 44px rgba(0,255,234,.45), inset 0 0 18px rgba(255,255,255,.06); }
+  60% { box-shadow: 0 0 36px rgba(0,153,255,.7), 0 0 56px rgba(255,255,0,.5), inset 0 0 22px rgba(255,255,255,.08); }
+}
+.light-strip { position: absolute; pointer-events: none; }
+.light-strip.top,
+.light-strip.bottom { left: 8px; right: 8px; height: 8px; }
+.light-strip.left,
+.light-strip.right { top: 8px; bottom: 8px; width: 8px; }
+.light-strip.top { top: 8px; }
+.light-strip.bottom { bottom: 8px; }
+.light-strip.left { left: 8px; }
+.light-strip.right { right: 8px; }
+.light-strip::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: transparent;
+  box-shadow:
+    0 0 8px 2px rgba(255,0,0,.8),
+    40px 0 10px 2px rgba(255,255,0,.8),
+    80px 0 8px 2px rgba(0,255,0,.8),
+    120px 0 10px 2px rgba(0,255,255,.8),
+    160px 0 8px 2px rgba(0,128,255,.8),
+    200px 0 10px 2px rgba(255,0,191,.8),
+    240px 0 8px 2px rgba(255,140,0,.8);
+  animation: blink 0.8s steps(2, end) infinite alternate;
+  filter: blur(1px) drop-shadow(0 0 6px rgba(255,255,255,.35));
+}
+.light-strip.left::before,
+.light-strip.right::before { transform: rotate(90deg); transform-origin: top left; }
+@keyframes blink {
+  0% { opacity: .6; }
+  50% { opacity: 1; }
+  100% { opacity: .5; }
+}
