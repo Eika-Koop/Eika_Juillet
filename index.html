@@ -1,31 +1,48 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Warning</title>
-    <meta name="description" content="I've caught you and you know it! Your device has been infected!" />
-    <link rel="preload" as="audio" href="assets/audio/siren.mp3" />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <div id="overlay" class="overlay" aria-hidden="false">
-      <div class="overlay-card">
-        <h1>Enable sound</h1>
-        <p>Click para activar el sonido estridente.</p>
-        <button id="enable-audio" class="btn">ACTIVAR SONIDO</button>
-      </div>
-    </div>
-    <main class="stage">
-      <div class="neon-frame">
-        <img class="warning-gif" src="assets/img/warning.gif" alt="I've caught you and you know it! Your device has been infected!" />
-        <div class="light-strip top"></div>
-        <div class="light-strip right"></div>
-        <div class="light-strip bottom"></div>
-        <div class="light-strip left"></div>
-      </div>
-      <audio id="siren" src="assets/audio/siren.mp3" preload="auto" loop></audio>
-    </main>
-    <script src="js/main.js"></script>
-  </body>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mi vídeo</title>
+  <style>
+    html, body { height: 100%; margin: 0; background: #000; }
+    /* Contenedor a pantalla completa */
+    .wrapper {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #000;
+    }
+    /* El vídeo se adapta al navegador manteniendo proporción */
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain; /* cambia a 'cover' si prefieres rellenar con recorte */
+      max-width: 100%;
+      max-height: 100%;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <video id="video" controls preload="auto" playsinline poster="poster.jpg">
+      <!-- Sustituye video.mp4 por el nombre de tu archivo -->
+      <source src="video.mp4" type="video/mp4" />
+      Tu navegador no soporta el elemento <code>video</code>.
+    </video>
+  </div>
+
+  <script>
+    // OPCIONAL: Autoplay sin sonido (muchos navegadores requieren muted)
+    // Descomenta si lo quieres:
+    // const v = document.getElementById('video');
+    // v.muted = true; v.autoplay = true; v.loop = true;
+    // v.play().catch(() => {});
+  </script>
+</body>
 </html>
+
